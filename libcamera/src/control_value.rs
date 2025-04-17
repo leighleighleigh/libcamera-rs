@@ -240,7 +240,7 @@ impl ControlValue {
             }
             LIBCAMERA_CONTROL_TYPE_STRING => {
                 let slice = core::slice::from_raw_parts(data as *const u8, num_elements);
-                Ok(Self::String(core::str::from_utf8(slice).unwrap().to_string()))
+                Ok(Self::String(unsafe { core::str::from_utf8_unchecked(slice) }.to_string()))
             }
             LIBCAMERA_CONTROL_TYPE_RECTANGLE => {
                 let slice = core::slice::from_raw_parts(data as *const libcamera_rectangle_t, num_elements);
