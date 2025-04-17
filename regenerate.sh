@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cargo run --bin generate_from_git
 
-cargo +nightly fmt --all
+cargo fmt --all
